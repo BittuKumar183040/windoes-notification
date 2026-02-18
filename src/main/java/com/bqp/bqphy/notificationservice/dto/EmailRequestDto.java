@@ -2,6 +2,8 @@ package com.bqp.bqphy.notificationservice.dto;
 
 import lombok.Getter;
 import lombok.Setter;
+
+import java.io.File;
 import java.util.List;
 import java.util.Map;
 
@@ -13,5 +15,5 @@ public class EmailRequestDto {
     private List<String> cc;
     private String event;
     private Map<String, Object> information;
-
+    private File file;
 }

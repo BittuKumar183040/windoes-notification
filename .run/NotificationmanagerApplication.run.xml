@@ -1,0 +1,23 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="NotificationmanagerApplication" type="Application" factoryName="Application" nameIsGenerated="true">
+    <envs>
+      <env name="SMTP_HOST" value="smtp.gmail.com" />
+      <env name="SMTP_PASSWORD" value="fvna rues docb dwcs" />
+      <env name="SMTP_USERNAME" value="bk183040@gmail.com" />
+    </envs>
+    <option name="envFilePaths">
+      <option value="$PROJECT_DIR$/.env" />
+    </option>
+    <option name="MAIN_CLASS_NAME" value="com.bqp.bqphy.notificationservice.NotificationmanagerApplication" />
+    <module name="notificationmanager.main" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="com.bqp.bqphy.notificationservice.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <method v="2">
+      <option name="Make" enabled="true" />
+    </method>
+  </configuration>
+</component>

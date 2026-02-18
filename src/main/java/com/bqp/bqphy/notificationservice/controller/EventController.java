@@ -1,8 +1,8 @@
 package com.bqp.bqphy.notificationservice.controller;
 
 import com.bqp.bqphy.notificationservice.dto.EmailRequestDto;
-import com.bqp.bqphy.notificationservice.service.EventPublisher;
-import com.bqp.bqphy.notificationservice.service.MailService;
+import com.bqp.bqphy.notificationservice.*;
+import com.bqp.bqphy.notificationservice.service.EmailSenderInterface;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -11,26 +11,18 @@ import java.util.Map;
 @RequestMapping("/notification-manager")
 public class EventController {
 
-    private final EventPublisher publisher;
-    private final MailService mailService;
+    private final EmailSenderInterface emailSender;
 
-    public EventController(EventPublisher publisher, MailService mailService, MailService mailService1) {
-        this.publisher = publisher;
-        this.mailService = mailService1;
+    public EventController(EmailSenderInterface emailSender) {
+        this.emailSender = emailSender;
     }
 
-    @GetMapping("/test")
-    public Map<String, Object> fireEvent() {
-        publisher.publish();
-        return Map.of("status", "SUCCESS", "message", "Event Fired", "timestamp", System.currentTimeMillis());
-    }
-
-    @PostMapping("/email")
+    @PostMapping("/registration")
     public Map<String, Object> triggerMail(@RequestBody EmailRequestDto request) {
-        String subject = "Notification: " + request.getEvent();
-        Map<String, Object> body = request.getInformation();
 
-        mailService.sendEmail( request.getTo(), request.getCc(), subject, "body" );
+        Map<String, Object> body = request.getInformation();
+        String event = request.getEvent();
+        emailSender.submitEmail( request.getTo(), request.getCc(), event, body);
 
         return Map.of(
             "status", "QUEUED",

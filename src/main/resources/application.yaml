@@ -16,3 +16,6 @@ spring:
             enable: 'true'
             required: 'true'
 
+logging:
+  level:
+    com.bqp.bqphy.notificationservice: DEBUG
