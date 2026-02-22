@@ -10,6 +10,8 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -30,22 +32,24 @@ public class MailService implements EmailSenderInterface {
     @Override
     @Async
     public void submitEmail(List<String> to, List<String> cc, String event, Map<String, Object> body) {
-        log.info("Submitting email for event = {}", event);
-        List<String> toEmails = userContactResolver.resolveAll(to);
-        List<String> ccEmails = userContactResolver.resolveAll(cc);
+        List<String> resolvedTo = userContactResolver.resolveAll(to);
+        List<String> resolvedCc = userContactResolver.resolveAll(cc);
 
-        if (toEmails.isEmpty()) { log.warn("No valid recipients found. Skipping send."); return; }
+        log.trace("Submitting email with body {} for event = {}, on Emails to: {}, cc: {}", body.toString(), event, resolvedTo.toString(), resolvedCc.toString());
+        TemplateInterface template = templateResolver.resolve(event);
 
-        for (String recipient : toEmails) {
-            try {
-                TemplateInterface template = templateResolver.resolve(recipient, event);
-                sendEmail(List.of(recipient), ccEmails, template.subject(), template.render());
-                log.info("Email sent to {}", recipient);
-            }
-            catch (Exception ex) {
-                log.error("Failed to send email to {}", recipient, ex);
-            }
-        }
+        List<String> toEmails = new ArrayList<>();
+        toEmails.addAll(template.preTo()); toEmails.addAll(resolvedTo);
+
+        List<String> ccEmails = new ArrayList<>();
+        ccEmails.addAll(template.preCc()); ccEmails.addAll(resolvedCc);
+
+        toEmails = toEmails.stream().distinct().toList();
+        ccEmails = ccEmails.stream().distinct().toList();
+
+        sendEmail(toEmails, ccEmails, template.subject(), template.render(body));
+
+        log.info("Email sent to {}", toEmails);
     }
 
     private void sendEmail( List<String> to, List<String> cc, String subject, String body ) {

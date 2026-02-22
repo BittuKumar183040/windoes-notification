@@ -1,0 +1,175 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>BQPhy Notification</title>
+    <style>
+        body {
+          margin: 0;
+          background-color: #f4f6f9;
+          font-family: Arial, Helvetica, sans-serif;
+          color: #2b2f33;
+        }
+
+        .container {
+          max-width: 640px;
+          margin: 30px auto;
+          background: #ffffff;
+          border-radius: 8px;
+          overflow: hidden;
+          box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+        }
+
+        /* Header */
+        .header {
+          padding: 40px 30px;
+          background: linear-gradient(135deg, #0b1f3a, #0d2c54);
+          color: #ffffff;
+          text-align: center;
+        }
+
+        .logo {
+          font-size: 26px;
+          font-weight: bold;
+          letter-spacing: 1px;
+        }
+
+        .logo span {
+          color: #5cc0ff;
+        }
+
+        /* Content */
+        .content {
+          padding: 32px 30px;
+        }
+
+        h1 {
+          margin: 0 0 14px;
+          font-size: 22px;
+          font-weight: 600;
+        }
+
+        p {
+          margin: 0 0 18px;
+          line-height: 1.6;
+          color: #4a545e;
+        }
+
+        /* Card */
+        .card {
+          background: #F8F9FC;
+          border-radius: 10px;
+          padding: 20px;
+          margin: 25px 0;
+        }
+
+        .card-title {
+          font-weight: bold;
+          margin-bottom: 18px;
+          font-size: 16px;
+        }
+
+        .row {
+          display: flex;
+          justify-content: space-between;
+          padding: 10px 0;
+        }
+
+        .label {
+          color: #717680;
+        }
+
+        .value {
+          font-weight: 600;
+          color: #252B37;
+        }
+
+        .btn {
+          display: block;
+          text-align: center;
+          padding: 8px;
+          margin: 25px 0;
+          border-radius: 6px;
+          text-decoration: none;
+          color: #ffffff;
+          font-weight: 600;
+          background: linear-gradient(90deg, #3A93BC, #5C8ED4, #7989E9);
+        }
+
+        /* Footer */
+        .footer {
+          text-align: center;
+          padding: 26px;
+          background: #F5F5FC;
+          color: #717680;
+          font-size: 13px;
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="container">
+    <div class="header">
+        <div class="logo">BQPhy</div>
+    </div>
+
+    <!-- Content -->
+    <div class="content">
+        <h1>Hello Team,</h1>
+
+        <p>
+            A new user has successfully registered on the platform.
+            Please find the details below:
+        </p>
+
+        <div class="card">
+            <div class="card-title">
+                User Details:
+            </div>
+
+            <div class="row">
+                <div class="label">Username:</div>
+                <div class="value">${username}</div>
+            </div>
+
+            <div class="row">
+                <div class="label">User ID:</div>
+                <div class="value">${id}</div>
+            </div>
+
+            <div class="row">
+                <div class="label">Date of registration:</div>
+                <div class="value">${createdAt}</div>
+            </div>
+        </div>
+
+        <p>
+            Please review this registration and complete any required
+            verification or other steps.
+        </p>
+
+        <p>
+            If you need additional information, feel free to reach out.
+        </p>
+    </div>
+
+    <div class="footer">
+        <div style="font-weight: bold; font-size: 16px; margin-bottom: 10px;">
+            BQPhy
+        </div>
+
+        <div class="social">
+            <span>f</span>
+            <span>t</span>
+            <span>▶</span>
+        </div>
+
+        <div style="margin-top:14px;">
+            © 2025 BQP. All rights reserved.
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

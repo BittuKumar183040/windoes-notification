@@ -19,3 +19,6 @@ spring:
 logging:
   level:
     com.bqp.bqphy.notificationservice: DEBUG
+
+service:
+  IDENTITY_SERVICE: ${IDENTITY_SERVICE:http://identity-service:8080}
