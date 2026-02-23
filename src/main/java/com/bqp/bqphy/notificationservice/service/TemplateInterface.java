@@ -4,8 +4,9 @@ import java.util.List;
 import java.util.Map;
 
 public interface TemplateInterface {
-    List<String> preTo();
-    List<String> preCc();
+    default List<String> preTo() { return List.of(); }
+    default List<String> preCc() { return List.of(); }
+
     String event();
     String subject();
     String render(Map<String, Object> body);

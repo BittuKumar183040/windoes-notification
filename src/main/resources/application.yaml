@@ -15,6 +15,17 @@ spring:
           starttls:
             enable: 'true'
             required: 'true'
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    mode: HTML
+    encoding: UTF-8
+
+notification:
+  templates:
+    user-registration:
+      to: ${USER_REG_TO:bittu.kumar@betoo.co.in,cixadem596@advarm.com}
+      cc: ${USER_REG_CC:cixadem596@advarm.com}
 
 logging:
   level:
