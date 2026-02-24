@@ -4,13 +4,13 @@
 
 <div th:fragment="header">
     <div style="text-align:center; padding:30px; background:linear-gradient(135deg,#3A93BC,#5C8ED4, #7989E9); background-color:#5C8ED4; white-space:nowrap;">
-        <div style="display:inline-block;
-                vertical-align:middle;
-                margin-right:5px;">
-            <th:block th:replace="~{components/logo :: logo}"></th:block>
-        </div>
-        <div style="display:inline-block; vertical-align:middle; font-size:24px; font-weight:bold; color:#ffffff; line-height:3;">
-            BQPhy<sub style="font-size:12px;">®</sub>
+        <div style="margin-bottom:14px;">
+            <div class="bqplogo">
+                <img style="height: 40px; width: auto;" src="https://dev.bosonqpsi.com/assets/logo.svg" />
+            </div>
+            <div class="bqplogo-text " style="color:#ffffff; ">
+                BQPhy<sub style="font-size:12px;">®</sub>
+            </div>
         </div>
     </div>
 </div>

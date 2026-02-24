@@ -1,5 +1,6 @@
 package com.bqp.bqphy.notificationservice.service.impl;
 
+import com.bqp.bqphy.notificationservice.config.UserRegConfiguration;
 import com.bqp.bqphy.notificationservice.helper.EmailTemplateResolver;
 import com.bqp.bqphy.notificationservice.helper.UserContactResolver;
 import com.bqp.bqphy.notificationservice.service.EmailSenderInterface;
@@ -22,11 +23,21 @@ public class MailService implements EmailSenderInterface {
     private final JavaMailSender mailSender;
     private final EmailTemplateResolver templateResolver;
     private final UserContactResolver userContactResolver;
+    private final UserRegConfiguration userRegConfigurationProperties;
 
-    public MailService(JavaMailSender mailSender, EmailTemplateResolver templateResolver, UserContactResolver userContactResolver) {
+    public MailService(JavaMailSender mailSender, EmailTemplateResolver templateResolver, UserContactResolver userContactResolver, UserRegConfiguration userRegConfigurationProperties) {
         this.mailSender = mailSender;
         this.templateResolver = templateResolver;
         this.userContactResolver = userContactResolver;
+        this.userRegConfigurationProperties = userRegConfigurationProperties;
+    }
+
+    public List<String> preTo() {
+        return userRegConfigurationProperties.getTo();
+    }
+
+    public List<String> preCc() {
+        return userRegConfigurationProperties.getCc();
     }
 
     @Override
@@ -39,10 +50,10 @@ public class MailService implements EmailSenderInterface {
         TemplateInterface template = templateResolver.resolve(event);
 
         List<String> toEmails = new ArrayList<>();
-        toEmails.addAll(template.preTo()); toEmails.addAll(resolvedTo);
+        toEmails.addAll(preTo()); toEmails.addAll(resolvedTo);
 
         List<String> ccEmails = new ArrayList<>();
-        ccEmails.addAll(template.preCc()); ccEmails.addAll(resolvedCc);
+        ccEmails.addAll(preCc()); ccEmails.addAll(resolvedCc);
 
         toEmails = toEmails.stream().distinct().toList();
         ccEmails = ccEmails.stream().distinct().toList();

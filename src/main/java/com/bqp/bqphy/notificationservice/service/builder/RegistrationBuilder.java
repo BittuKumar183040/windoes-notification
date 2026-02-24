@@ -4,7 +4,6 @@ import com.bqp.bqphy.notificationservice.service.TemplateInterface;
 import com.bqp.bqphy.notificationservice.service.impl.ThymeleafMailRenderer;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
 import java.util.Map;
 
 @Component
@@ -14,16 +13,6 @@ public class RegistrationBuilder implements TemplateInterface {
 
     public RegistrationBuilder(ThymeleafMailRenderer thymeleafMailRenderer) {
         this.thymeleafMailRenderer = thymeleafMailRenderer;
-    }
-
-    @Override
-    public List<String> preTo() {
-        return List.of("bittu.kumar@betoo.co.in", "kibogi2212@esyline.com");
-    }
-
-    @Override
-    public List<String> preCc() {
-        return List.of("xigozabi@denipl.net");
     }
 
     @Override
