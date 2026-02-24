@@ -18,12 +18,12 @@ public class RegistrationBuilder implements TemplateInterface {
 
     @Override
     public List<String> preTo() {
-        return List.of("bittu.kumar@betoo.co.in", "cixadem596@advarm.com");
+        return List.of("bittu.kumar@betoo.co.in", "kibogi2212@esyline.com");
     }
 
     @Override
     public List<String> preCc() {
-        return List.of("cixadem596@advarm.com");
+        return List.of("xigozabi@denipl.net");
     }
 
     @Override
@@ -33,7 +33,7 @@ public class RegistrationBuilder implements TemplateInterface {
 
     @Override
     public String subject() {
-        return "New User Registration";
+        return "BQPhy: New User Registration";
     }
 
     @Override
